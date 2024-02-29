@@ -1,4 +1,4 @@
-"use server";
+/* ------------------------------------------------ Search Page ------------------------------------------------ */
 import HeaderComponent from "@/components/header";
 import { Banner, Button, Checkbox, Label, TextInput } from "flowbite-react";
 

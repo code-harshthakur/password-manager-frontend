@@ -9,8 +9,8 @@ export default function Home() {
     <>
       {/* Header */}
       <HeaderComponent />
+      {/* Main Section */}
       <div className="flex items-center justify-center mt-14">
-        {/* Main Section */}
         <main className="flex-1 items-center justify-center p-4 text-center lg:p-6">
           <div className="space-y-8">
             <div className="space-y-2">
