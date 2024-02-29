@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, TextInput, Label } from 'flowbite-react';
+import React from "react";
+import { Button, TextInput, Label } from "flowbite-react";
 
 const ComingSoonPage = (): JSX.Element => {
   return (
