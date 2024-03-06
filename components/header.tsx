@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Banner } from "flowbite-react";
 import React from "react";
 

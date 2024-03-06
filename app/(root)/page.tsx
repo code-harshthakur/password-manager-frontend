@@ -1,10 +1,11 @@
 /*-------------------------------------------Home Page------------------------------------------------------*/
+"use server";
 import { Banner, Button } from "flowbite-react";
 import { FaSun } from "react-icons/fa"; // Import the sun icon from react-icons library
 import Link from "next/link";
 import HeaderComponent from "@/components/header";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       {/* Header */}

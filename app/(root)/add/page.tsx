@@ -17,12 +17,22 @@ const AddPage = (): JSX.Element => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const result = await addData(input);
+      console.log(result);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const addData = async (data: {
     label: string;
     username: string;
     password: string;
   }) => {
-    const response = await fetch(`${process.env.PUBLIC_API_URL}/add`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,26 +46,13 @@ const AddPage = (): JSX.Element => {
     return response.json();
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const result = await addData(input);
-      console.log(result);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
   return (
     <>
       {/* Header */}
       <HeaderComponent />
       {/* Main Content */}
       <div className="flex h-screen justify-center items-center">
-        <form
-          className="w-full max-w-md flex flex-col gap-4 p-4 bg-white rounded-lg shadow"
-          onSubmit={handleSubmit}
-        >
+        <form className="w-full max-w-md flex flex-col gap-4 p-4 bg-white rounded-lg shadow">
           <div>
             <Label htmlFor="label">Label</Label>
             <TextInput
