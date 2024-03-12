@@ -7,18 +7,25 @@ import Link from "next/link";
 import HeaderComponent from "@/components/header";
 
 const AddPage = (): JSX.Element => {
-  const [input, setInput] = useState({
-    label: "",
-    username: "",
-    password: "",
-  });
+  const [label, setLabel] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleLabel = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLabel(e.target.value);
+  };
+
+  const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const input = { label,username,password };
     try {
       const result = await addData(input);
       console.log(result);
@@ -52,7 +59,7 @@ const AddPage = (): JSX.Element => {
       <HeaderComponent />
       {/* Main Content */}
       <div className="flex h-screen justify-center items-center">
-        <form className="w-full max-w-md flex flex-col gap-4 p-4 bg-white rounded-lg shadow">
+        <form className="w-full max-w-md flex flex-col gap-4 p-4 bg-white rounded-lg shadow" onSubmit={handleSubmit}>
           <div>
             <Label htmlFor="label">Label</Label>
             <TextInput
@@ -60,10 +67,10 @@ const AddPage = (): JSX.Element => {
               name="label"
               type="text"
               placeholder="Your unique label"
-              value={input.label}
+              value={label}
               required
               shadow
-              onChange={handleChange}
+              onChange={handleLabel}
             />
           </div>
           <div>
@@ -73,9 +80,10 @@ const AddPage = (): JSX.Element => {
               name="username"
               type="text"
               placeholder="name@xyz.com"
-              value={input.username}
+              value={username}
               required
               shadow
+              onChange={handleUsername}
             />
           </div>
           <div>
@@ -85,9 +93,10 @@ const AddPage = (): JSX.Element => {
               name="password"
               type="password"
               placeholder="••••••••"
-              value={input.password}
+              value={password}
               required
               shadow
+              onChange={handlePassword}
             />
           </div>
           <div className="flex items-center gap-2">
