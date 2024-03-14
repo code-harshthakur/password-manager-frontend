@@ -25,7 +25,7 @@ const AddPage = (): JSX.Element => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const input = { label,username,password };
+    const input = { label, username, password };
     try {
       const result = await addData(input);
       console.log(result);
@@ -59,7 +59,10 @@ const AddPage = (): JSX.Element => {
       <HeaderComponent />
       {/* Main Content */}
       <div className="flex h-screen justify-center items-center">
-        <form className="w-full max-w-md flex flex-col gap-4 p-4 bg-white rounded-lg shadow" onSubmit={handleSubmit}>
+        <form
+          className="w-full max-w-md flex flex-col gap-4 p-4 bg-white rounded-lg shadow"
+          onSubmit={handleSubmit}
+        >
           <div>
             <Label htmlFor="label">Label</Label>
             <TextInput
